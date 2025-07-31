@@ -1,5 +1,8 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Empregado {
-    private double salarioFixo;
+    protected double salarioFixo;
 
     public Empregado(double salarioFixo) {
         this.salarioFixo = salarioFixo;
@@ -11,14 +14,21 @@ public class Empregado {
 
     public double calcularBonus(Departamento departamento) {
         if (departamento.alcancouMeta()) {
-            return salarioFixo * 0.1;
-        } else {
-            return 0.0;
+            BigDecimal salarioBD = new BigDecimal(String.format("%.2f", salarioFixo));
+            BigDecimal bonus = salarioBD.multiply(new BigDecimal("0.10"));
+            bonus = bonus.setScale(2, RoundingMode.HALF_UP);
+            return bonus.doubleValue();
         }
+        return 0.0;
     }
 
     public double calcularSalarioTotal(Departamento departamento) {
-        return salarioFixo + calcularBonus(departamento);
+        double bonus = calcularBonus(departamento);
+        BigDecimal salarioBD = new BigDecimal(String.format("%.2f", salarioFixo));
+        BigDecimal bonusBD = new BigDecimal(String.format("%.2f", bonus));
+        BigDecimal total = salarioBD.add(bonusBD);
+        total = total.setScale(2, RoundingMode.HALF_UP);
+        return total.doubleValue();
     }
-}
 
+}

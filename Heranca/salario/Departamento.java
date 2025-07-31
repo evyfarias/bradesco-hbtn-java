@@ -1,5 +1,4 @@
 public class Departamento {
-
     private double valorMeta;
     private double valorAtingidoMeta;
 
@@ -19,5 +18,4 @@ public class Departamento {
     public boolean alcancouMeta(){
         return valorAtingidoMeta >= valorMeta;
     }
-    
 }
