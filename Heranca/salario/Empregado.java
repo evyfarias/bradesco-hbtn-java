@@ -1,5 +1,3 @@
-package Heranca.salario;
-
 public class Empregado {
     private double salarioFixo;
 
@@ -13,7 +11,7 @@ public class Empregado {
 
     public double calcularBonus(Departamento departamento) {
         if (departamento.alcancouMeta()) {
-            return salarioFixo * 0.1; // 10% de bônus
+            return salarioFixo * 0.1;
         } else {
             return 0.0;
         }

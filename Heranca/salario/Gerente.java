@@ -1,5 +1,3 @@
-package Heranca.salario;
-
 public class Gerente extends Empregado {
 
     public Gerente(double salarioFixo) {
@@ -9,7 +7,7 @@ public class Gerente extends Empregado {
     @Override
     public double calcularBonus(Departamento departamento) {
         if (departamento.alcancouMeta()) {
-            return getSalarioFixo() * 0.2; // 20% de bônus para gerente
+            return getSalarioFixo() * 0.2;
         } else {
             return 0.0;
         }

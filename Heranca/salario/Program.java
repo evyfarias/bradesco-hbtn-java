@@ -1,5 +1,3 @@
-package Heranca.salario;
-
 import java.util.Locale;
 
 public class Program {
