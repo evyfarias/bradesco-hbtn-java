@@ -1,3 +1,5 @@
+package produtos;
+
 public class Dvd extends Produto {
     private String diretor;
     private String genero;
@@ -10,17 +12,9 @@ public class Dvd extends Produto {
         this.duracao = duracao;
     }
 
-    public String getDiretor() {
-        return diretor;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public int getDuracao() {
-        return duracao;
-    }
+    public String getDiretor() { return diretor; }
+    public String getGenero() { return genero; }
+    public int getDuracao() { return duracao; }
 
     @Override
     public double obterPrecoLiquido() {

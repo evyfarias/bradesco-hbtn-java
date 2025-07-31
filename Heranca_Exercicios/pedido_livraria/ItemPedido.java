@@ -1,3 +1,5 @@
+import produtos.Produto;
+
 public class ItemPedido {
     private Produto produto;
     private int quantidade;

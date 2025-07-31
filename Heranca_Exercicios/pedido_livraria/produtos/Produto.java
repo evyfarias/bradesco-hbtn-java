@@ -1,3 +1,5 @@
+package produtos;
+
 public abstract class Produto {
     protected String titulo;
     protected int ano;
@@ -11,21 +13,10 @@ public abstract class Produto {
         this.precoBruto = precoBruto;
     }
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public int getAno() {
-        return ano;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public double getPrecoBruto() {
-        return precoBruto;
-    }
+    public String getTitulo() { return titulo; }
+    public int getAno() { return ano; }
+    public String getPais() { return pais; }
+    public double getPrecoBruto() { return precoBruto; }
 
     public abstract double obterPrecoLiquido();
 }

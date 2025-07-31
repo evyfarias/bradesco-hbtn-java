@@ -20,7 +20,6 @@ public class Pedido {
         for (ItemPedido item : itens) {
             total += item.getQuantidade() * item.getProduto().obterPrecoLiquido();
         }
-        total = total * (1 - percentualDesconto / 100.0);
-        return total;
-    }    
+        return total * (1 - percentualDesconto);
+    }
 }
