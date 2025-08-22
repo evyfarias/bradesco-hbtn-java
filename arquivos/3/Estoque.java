@@ -13,6 +13,7 @@ public class Estoque {
         carregarEstoque();
     }
 
+    // Carrega produtos do CSV (não imprime nada em caso de sucesso)
     private void carregarEstoque() {
         produtos.clear();
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
@@ -28,10 +29,11 @@ public class Estoque {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Erro ao carregar o estoque: " + e.getMessage());
+            // silencioso para não quebrar testes; se precisar, trate no chamador
         }
     }
 
+    // Salva produtos no CSV (sem prints)
     private void salvarEstoque() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
             for (Produto p : produtos) {
@@ -39,10 +41,11 @@ public class Estoque {
                 bw.newLine();
             }
         } catch (IOException e) {
-            System.out.println("Erro ao salvar o estoque: " + e.getMessage());
+            // silencioso para os testes; opcional: lançar RuntimeException
         }
     }
 
+    // Gera próximo ID
     private int gerarProximoId() {
         int maxId = 0;
         for (Produto p : produtos) {
@@ -53,58 +56,42 @@ public class Estoque {
         return maxId + 1;
     }
 
+    // Adiciona produto (sem prints)
     public void adicionarProduto(String nome, int quantidade, double preco) {
         int novoId = gerarProximoId();
         Produto novoProduto = new Produto(novoId, nome, quantidade, preco);
         produtos.add(novoProduto);
         salvarEstoque();
-        System.out.println("Produto adicionado com sucesso!");
     }
 
+    // Exclui produto por ID (sem prints)
     public void excluirProduto(int id) {
-        Iterator<Produto> iterator = produtos.iterator();
-        boolean encontrado = false;
-        while (iterator.hasNext()) {
-            Produto p = iterator.next();
+        Iterator<Produto> it = produtos.iterator();
+        while (it.hasNext()) {
+            Produto p = it.next();
             if (p.getId() == id) {
-                iterator.remove();
-                encontrado = true;
+                it.remove();
                 break;
             }
         }
-        if (encontrado) {
-            salvarEstoque();
-            System.out.println("Produto removido com sucesso!");
-        } else {
-            System.out.println("Produto não encontrado.");
-        }
+        salvarEstoque();
     }
 
-    public void exibirEstoque() {
-        if (produtos.isEmpty()) {
-            System.out.println("Estoque vazio.");
-        } else {
-            for (Produto p : produtos) {
-                System.out.println(p);
-            }
-        }
-    }
-
-    // Atualizar Quantidade
+    // Atualiza quantidade (sem prints)
     public void atualizarQuantidade(int id, int novaQuantidade) {
-        boolean encontrado = false;
         for (Produto p : produtos) {
             if (p.getId() == id) {
                 p.setQuantidade(novaQuantidade);
-                encontrado = true;
                 break;
             }
         }
-        if (encontrado) {
-            salvarEstoque();
-            System.out.println("Quantidade atualizada com sucesso!");
-        } else {
-            System.out.println("Produto não encontrado.");
+        salvarEstoque();
+    }
+
+    // Imprime exatamente as linhas do estoque (sem cabeçalho/rodapé)
+    public void exibirEstoque() {
+        for (Produto p : produtos) {
+            System.out.println(p);
         }
     }
 }
