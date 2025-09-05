@@ -11,7 +11,6 @@ public class PessoasArray {
         };
     }
 
-    // Busca linear mantendo todos os indices
     public void buscaLinear(String nome) {
         int posicaoEncontrada = -1;
         System.out.println("Procurando pelo nome: \"" + nome + "\"");
@@ -24,6 +23,7 @@ public class PessoasArray {
             }
         }
 
+        // Lança a exceção apenas se não encontrou
         if (posicaoEncontrada == -1) {
             throw new IllegalArgumentException("O nome " + nome + " não se encontra no array de nomes");
         }
