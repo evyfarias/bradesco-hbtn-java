@@ -3,30 +3,35 @@ public class PessoasArray {
     private String[] nomes;
 
     public PessoasArray() {
-        nomes = new String[]{
-            "Amanda", "Beatriz", "Carlos","Daniela","Eduardo",
-            "Fabio","Gustavo", "Hingrid","Isabela","Joao","Leise","Maria",
-            "Norberto","Otavio","Paulo", "Quirino","Renata","Sabata",
-            "Tais","Umberto","Vanessa","Xavier"
-        };
+        nomes = new String[]{"Amanda", "Beatriz", "Carlos", "Daniela", "Eduardo",
+                "Fabio", "Gustavo", "Hingrid", "Isabela", "Joao", "Leise", "Maria",
+                "Norberto", "Otavio", "Paulo", "Quirino", "Renata", "Sabata",
+                "Tais", "Umberto", "Vanessa", "Xavier"};
     }
 
+    public String[] getNomes() {
+        return nomes;
+    }
+
+    public void setNomes(String[] nomes) {
+        this.nomes = nomes;
+    }
+
+    // implementação da busca linear
     public void buscaLinear(String nome) {
-        int posicaoEncontrada = -1;
         System.out.println("Procurando pelo nome: \"" + nome + "\"");
+        boolean encontrado = false;
 
         for (int i = 0; i < nomes.length; i++) {
             System.out.println("Passando pelo indice:" + i);
             if (nomes[i].equals(nome)) {
-                posicaoEncontrada = i;
                 System.out.println("Nome pesquisado é " + nome + " que está na posição " + i);
+                encontrado = true;
             }
         }
 
-        if (posicaoEncontrada == -1) {
-            throw new IllegalArgumentException(
-                "O nome " + nome + " não se encontra no array de nomes"
-            );
+        if (!encontrado) {
+            throw new IllegalArgumentException("O nome " + nome + " não se encontra no array de nomes");
         }
     }
 }
