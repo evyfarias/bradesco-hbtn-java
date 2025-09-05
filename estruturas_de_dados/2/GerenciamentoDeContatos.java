@@ -12,7 +12,7 @@ public class GerenciamentoDeContatos {
     // Adiciona um novo contato
     public void adicionarContato(String nome, String telefone, String email) {
         if (contatos.containsKey(nome)) {
-            System.out.println("Erro: Contato com nome " + nome + " ja existe!");
+            System.out.println("Erro: Contato com nome " + nome + " já existe!");
             return;
         }
 
@@ -23,7 +23,7 @@ public class GerenciamentoDeContatos {
             contatos.put(nome, contato);
             System.out.println("Contato " + nome + " adicionado com sucesso!");
         } else {
-            System.out.println("Erro: Email ja utilizado!");
+            System.out.println("Erro: Email já utilizado!");
         }
     }
 
@@ -44,7 +44,7 @@ public class GerenciamentoDeContatos {
             System.out.println("Contato encontrado: " + nome);
             contatos.get(nome).exibirContato();
         } else {
-            System.out.println("Contato " + nome + " nao encontrado.");
+            System.out.println("Contato " + nome + " não encontrado.");
         }
     }
 
@@ -54,7 +54,7 @@ public class GerenciamentoDeContatos {
             contatos.remove(nome);
             System.out.println("Contato " + nome + " removido com sucesso!");
         } else {
-            System.out.println("Contato " + nome + " nao encontrado.");
+            System.out.println("Contato " + nome + " não encontrado.");
         }
     }
 
@@ -80,11 +80,11 @@ public class GerenciamentoDeContatos {
         gestao.removerContato("Carlos");
 
         // Tentando remover um contato inexistente
-        System.out.println("\nTentando remover contato 'Joao' que nao existe:");
-        gestao.removerContato("Joao");
+        System.out.println("\nTentando remover contato 'João' que não existe:");
+        gestao.removerContato("João");
 
-        // Exibindo todos os contatos apos remocoes
-        System.out.println("\nExibindo todos os contatos apos remocoes:");
+        // Exibindo todos os contatos após remoções
+        System.out.println("\nExibindo todos os contatos após remoções:");
         gestao.exibirContatos();
     }
 }
