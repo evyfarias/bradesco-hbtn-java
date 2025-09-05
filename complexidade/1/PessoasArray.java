@@ -23,9 +23,10 @@ public class PessoasArray {
             }
         }
 
-        // Lança a exceção apenas se não encontrou
         if (posicaoEncontrada == -1) {
-            throw new IllegalArgumentException("O nome " + nome + " não se encontra no array de nomes");
+            throw new IllegalArgumentException(
+                "O nome " + nome + " não se encontra no array de nomes"
+            );
         }
     }
 }
