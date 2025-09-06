@@ -41,12 +41,12 @@ public class Post implements Comparable<Post> {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (!(obj instanceof Post)) return false;
-        Post post = (Post) obj;
-        return this.autor.equals(post.autor) && this.titulo.equals(post.titulo);
+        Post outro = (Post) obj;
+        return autor.equals(outro.autor) && titulo.equals(outro.titulo);
     }
 
     @Override
     public int hashCode() {
-        return (autor.toString() + titulo).hashCode();
+        return autor.hashCode() + 31 * titulo.hashCode();
     }
 }

@@ -22,20 +22,23 @@ public class Autor implements Comparable<Autor> {
 
     @Override
     public int compareTo(Autor outro) {
-        int cmp = this.toString().compareTo(outro.toString());
-        return cmp;
+        int resultado = this.nome.compareTo(outro.nome);
+        if (resultado == 0) {
+            resultado = this.sobrenome.compareTo(outro.sobrenome);
+        }
+        return resultado;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (!(obj instanceof Autor)) return false;
-        Autor autor = (Autor) obj;
-        return this.nome.equals(autor.nome) && this.sobrenome.equals(autor.sobrenome);
+        Autor outro = (Autor) obj;
+        return nome.equals(outro.nome) && sobrenome.equals(outro.sobrenome);
     }
 
     @Override
     public int hashCode() {
-        return (nome + sobrenome).hashCode();
+        return nome.hashCode() + 31 * sobrenome.hashCode();
     }
 }
