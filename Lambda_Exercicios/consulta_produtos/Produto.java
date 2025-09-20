@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class Produto {
     private String nome;
     private double preco;
@@ -35,6 +37,9 @@ public class Produto {
 
     @Override
     public String toString() {
-        return nome + " " + preco + " " + peso + " " + quantidadeEmEstoque + " " + tipo;
+        // Formata números com 6 casas decimais e vírgula como separador decimal
+        return String.format(Locale.getDefault(), "%s %.6f %.6f %d %s",
+                nome, preco, peso, quantidadeEmEstoque, tipo)
+                .replace('.', ',');
     }
 }
