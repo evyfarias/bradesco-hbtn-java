@@ -42,6 +42,10 @@ public class Pessoa implements Comparable<Pessoa> {
 
     @Override
     public int compareTo(Pessoa outra) {
+        // Ordena pelo nome
+        int cmp = this.nome.compareTo(outra.nome);
+        if (cmp != 0) return cmp;
+        // Caso o nome seja igual, usa código como critério secundário
         return Integer.compare(this.codigo, outra.codigo);
     }
 
