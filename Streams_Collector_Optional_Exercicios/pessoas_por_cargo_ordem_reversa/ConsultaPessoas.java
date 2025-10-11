@@ -9,7 +9,7 @@ public class ConsultaPessoas {
                         Pessoa::getCargo,
                         () -> new TreeMap<>(Comparator.reverseOrder()), // cargos em ordem reversa
                         Collectors.toCollection(() ->
-                            new TreeSet<>(Comparator.comparing(Pessoa::getCodigo)) // ordena exatamente pelo código
+                            new TreeSet<>(Comparator.comparingInt(Pessoa::getCodigo)) // ordem dos códigos conforme o teste
                         )
                 ));
     }

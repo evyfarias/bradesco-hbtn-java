@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Pessoa implements Comparable<Pessoa> {
+public class Pessoa {
     private int codigo;
     private String nome;
     private String cargo;
@@ -37,15 +37,9 @@ public class Pessoa implements Comparable<Pessoa> {
 
     @Override
     public String toString() {
-        // Formato com vírgula para o decimal, como o teste espera
+        // Formato com vírgula nos decimais, conforme o teste
         return String.format("[%d] %s %s %d R$ %f", codigo, nome, cargo, idade, salario)
                      .replace('.', ',');
-    }
-
-    @Override
-    public int compareTo(Pessoa outra) {
-        // Ordena por código para coincidir com o teste
-        return Integer.compare(this.codigo, outra.codigo);
     }
 
     @Override
