@@ -13,26 +13,23 @@ public class Program {
         Pessoa pessoa9 = new Pessoa(9, "Andrei Melendez", "Analista QA", 42, 5330);
         Pessoa pessoa10 = new Pessoa(10, "Branden Irwin", "Analista QA", 21, 2800);
 
-        List<Pessoa> todasPessoas = List.of(pessoa1, pessoa2, pessoa3, pessoa4, pessoa5,
-            pessoa6, pessoa7, pessoa8, pessoa9, pessoa10);
-
-        // Teste 1: lista completa
-        Map<String, Long> quantidade1 = ConsultaPessoas.obterQuantidadePorCargoAcimaDe40anos(todasPessoas);
-
-        // Teste 2: apenas alguns elementos
-        Map<String, Long> quantidade2 = ConsultaPessoas.obterQuantidadePorCargoAcimaDe40anos(
-            List.of(pessoa1, pessoa4, pessoa10)
+        List<Pessoa> todasPessoas = List.of(
+            pessoa1, pessoa2, pessoa3, pessoa4, pessoa5,
+            pessoa6, pessoa7, pessoa8, pessoa9, pessoa10
         );
 
-        // Teste 3: outro subset
-        Map<String, Long> quantidade3 = ConsultaPessoas.obterQuantidadePorCargoAcimaDe40anos(
+        Map<String, List<Pessoa>> pessoas1 = ConsultaPessoas.obterPessoasPorCargoAcimaDe40anos(todasPessoas);
+        Map<String, List<Pessoa>> pessoas2 = ConsultaPessoas.obterPessoasPorCargoAcimaDe40anos(
+            List.of(pessoa1, pessoa4, pessoa10)
+        );
+        Map<String, List<Pessoa>> pessoas3 = ConsultaPessoas.obterPessoasPorCargoAcimaDe40anos(
             List.of(pessoa4, pessoa9)
         );
 
-        System.out.println(quantidade1);
+        System.out.println(pessoas1);
         System.out.println();
-        System.out.println(quantidade2);
+        System.out.println(pessoas2);
         System.out.println();
-        System.out.println(quantidade3);
+        System.out.println(pessoas3);
     }
 }
