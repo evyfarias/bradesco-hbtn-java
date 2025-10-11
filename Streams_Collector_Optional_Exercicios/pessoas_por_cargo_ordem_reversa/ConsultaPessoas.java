@@ -7,8 +7,10 @@ public class ConsultaPessoas {
         return pessoas.stream()
                 .collect(Collectors.groupingBy(
                         Pessoa::getCargo,
-                        () -> new TreeMap<>(Comparator.reverseOrder()), // ordem reversa dos cargos
-                        Collectors.toCollection(TreeSet::new)          // TreeSet de pessoas (usa Comparable)
+                        () -> new TreeMap<>(Comparator.reverseOrder()), // cargos em ordem reversa
+                        Collectors.toCollection(() ->
+                            new TreeSet<>(Comparator.comparing(Pessoa::getCodigo)) // ordena exatamente pelo código
+                        )
                 ));
     }
 }
