@@ -37,7 +37,7 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        // Formato com vírgula nos decimais, conforme o teste
+        // Formato com vírgula nos decimais, conforme teste
         return String.format("[%d] %s %s %d R$ %f", codigo, nome, cargo, idade, salario)
                      .replace('.', ',');
     }
