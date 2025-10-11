@@ -37,11 +37,13 @@ public class Pessoa implements Comparable<Pessoa> {
 
     @Override
     public String toString() {
-        return "[" + codigo + "] " + nome + " " + cargo + " " + idade + " R$ " + salario;
+        // Formata o salário com 6 casas decimais e substitui ponto por vírgula
+        return String.format("[%d] %s %s %d R$ %.6f", codigo, nome, cargo, idade, salario).replace('.', ',');
     }
 
     @Override
     public int compareTo(Pessoa outra) {
+        // Ordena pelo nome; se nomes iguais, desempata pelo código
         int cmp = this.nome.compareTo(outra.nome);
         if (cmp != 0) return cmp;
         return Integer.compare(this.codigo, outra.codigo);
