@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Pessoa {
+public class Pessoa implements Comparable<Pessoa> {
     private int codigo;
     private String nome;
     private String cargo;
@@ -37,15 +37,20 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        // Formato com vírgula nos decimais, conforme teste
-        return String.format("[%d] %s %s %d R$ %f", codigo, nome, cargo, idade, salario)
-                     .replace('.', ',');
+        return "[" + codigo + "] " + nome + " " + cargo + " " + idade + " R$ " + salario;
+    }
+
+    @Override
+    public int compareTo(Pessoa outra) {
+        int cmp = this.nome.compareTo(outra.nome);
+        if (cmp != 0) return cmp;
+        return Integer.compare(this.codigo, outra.codigo);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Pessoa)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Pessoa pessoa = (Pessoa) o;
         return codigo == pessoa.codigo;
     }
